@@ -1,0 +1,88 @@
+package com.area5dev.apphome001;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+public class MainActivity extends AppCompatActivity {
+
+    private View opcion_1,opcion_2, opcion_3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        opcion_1=findViewById(R.id.opcion_1);
+        opcion_2=findViewById(R.id.opcion_2);
+        opcion_3=findViewById(R.id.opcion_3);
+
+        Spinner spinner=(Spinner) findViewById(R.id.spinner);
+        String [] letra={"SEMANAS","MESES","AÑOS"};
+        spinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,letra));
+
+    }
+
+
+
+    public void generarReporte(View view) {
+
+        opcion_1.setEnabled(true);
+        opcion_2.setEnabled(true);
+        opcion_3.setEnabled(true);
+    }
+}
+********************************************************************
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:padding="16dp"
+    >
+
+<TextView
+    android:id="@+id/text_info"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Marque categoria para el reporte"
+    />
+<CheckBox
+    android:id="@+id/opcion_1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:enabled="false"
+    android:focusable="true"
+    android:text="Generar reporte semanal"
+    />
+<CheckBox
+    android:id="@+id/opcion_2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:enabled="false"
+    android:focusable="true"
+    android:text="Generar reporte mensual"
+    />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:onClick="generarReporte"
+    android:text="GENERAR REPORTE"
+    android:layout_marginTop="16dp"
+    />
+<Spinner
+    android:id="@+id/spinner"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    ></Spinner>
+
+</LinearLayout>
